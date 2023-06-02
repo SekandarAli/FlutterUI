@@ -2,8 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import '../../../../projectScreen.dart';
@@ -361,51 +359,51 @@ class _TaskViewState extends State<TaskView> {
                 children: [
 
                   /// Time Picker
-                  GestureDetector(
-                    onTap: () {
-                      DatePicker.showTimePicker(context,
-                          showTitleActions: true,
-                          showSecondsColumn: false,
-                          onChanged: (_) {}, onConfirm: (selectedTime) {
-                        setState(() {
-                          if (widget.task?.createdAtTime == null) {
-                            time = selectedTime;
-                          } else {
-                            widget.task!.createdAtTime = selectedTime;
-                          }
-                        });
-
-                        FocusManager.instance.primaryFocus?.unfocus();
-                      }, currentTime: showTimeAsDateTime(time));
-                    },
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 70,
-                      child: Row(
-                        children: [
-                          Text(MyString.timeString, style: textTheme.titleMedium),
-                          Expanded(child: Container()),
-                          Container(
-                            width: 80,
-                            height: 35,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey.shade100),
-                            child: Center(
-                              child: Text(
-                                showTime(time),
-                                style: textTheme.titleSmall,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     DatePicker.showTimePicker(context,
+                  //         showTitleActions: true,
+                  //         showSecondsColumn: false,
+                  //         onChanged: (_) {}, onConfirm: (selectedTime) {
+                  //       setState(() {
+                  //         if (widget.task?.createdAtTime == null) {
+                  //           time = selectedTime;
+                  //         } else {
+                  //           widget.task!.createdAtTime = selectedTime;
+                  //         }
+                  //       });
+                  //
+                  //       FocusManager.instance.primaryFocus?.unfocus();
+                  //     }, currentTime: showTimeAsDateTime(time));
+                  //   },
+                  //   child: SizedBox(
+                  //     width: double.infinity,
+                  //     height: 70,
+                  //     child: Row(
+                  //       children: [
+                  //         Text(MyString.timeString, style: textTheme.titleMedium),
+                  //         Expanded(child: Container()),
+                  //         Container(
+                  //           width: 80,
+                  //           height: 35,
+                  //           decoration: BoxDecoration(
+                  //               borderRadius: BorderRadius.circular(10),
+                  //               color: Colors.grey.shade100),
+                  //           child: Center(
+                  //             child: Text(
+                  //               showTime(time),
+                  //               style: textTheme.titleSmall,
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
 
 
                   /// Date Picker
-                  GestureDetector(
+                 /* GestureDetector(
                     onTap: () {
                       DatePicker.showDatePicker(context,
                           showTitleActions: true,
@@ -445,7 +443,7 @@ class _TaskViewState extends State<TaskView> {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
 
                   /// Mark as Important
 

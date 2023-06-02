@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:task_list_app/generated/assets.dart';
@@ -28,7 +27,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    double w = MediaQuery.of(context).size.width;
     final List<Widget> pages = [
       OnBoardingPages(
         title: 'You are\nready to go!',
@@ -79,7 +78,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 right: 0,
                 child: Column(
                   children: [
-                    SizedBox(
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(100)),
+                      ),
+                      width: w * 0.8,
                       height: 8,
                       child: ListView.builder(
                         itemCount: pages.length,
@@ -87,16 +92,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            padding: EdgeInsets.symmetric(horizontal: 2),
+                            padding: EdgeInsets.symmetric(horizontal: 0),
                             child: AnimatedContainer(
-                              duration: Duration(milliseconds: timeDuration),
-                              width: _currentPage == index ? 20 : 8,
+                              duration: Duration(milliseconds: 500),
+                              width: _currentPage == index ? w * 0.2 : w * 0.2,
                               decoration: BoxDecoration(
                                 color: _currentPage == index
                                     ? ColorsTheme.black
-                                    : Colors.grey[200],
+                                    : Colors.grey,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                             ),
                           );

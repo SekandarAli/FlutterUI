@@ -6,10 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task_list_app/projects/workOutApp/model/model.dart';
-import 'package:task_list_app/projects/workOutApp/view/screens/homeScreen.dart';
-import 'package:task_list_app/projects/workOutApp/view/viewModel/workOutPlanGenerate.dart';
-import 'package:task_list_app/styles/color.dart';
+import 'package:task_list_app/projects/faceApp/onBoarding/transition.dart';
 import 'controller/active_app_controller.dart';
 import 'projectScreen.dart';
 import 'dart:async';
@@ -73,8 +70,11 @@ class _MyAppState extends State<MyApp> {
           // home: CardSlider()
         );
       },
-      child: ProjectScreen(),
+      // child: ProjectScreen(),
+      child: MyCustomWidget(),
     );
   }
 }
+
+
 

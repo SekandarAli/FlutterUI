@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:task_list_app/projects/customChart/customCharts3.dart';
+import 'package:task_list_app/projects/customChart/customCharts5.dart';
 import 'package:task_list_app/styles/color.dart';
 
-class CustomChart2Screen extends StatefulWidget {
-  CustomChart2Screen({Key? key}) : super(key: key);
+class CustomChart4Screen extends StatefulWidget {
+  CustomChart4Screen({Key? key}) : super(key: key);
 
   @override
-  _CustomChart2ScreenState createState() => _CustomChart2ScreenState();
+  _CustomChart4ScreenState createState() => _CustomChart4ScreenState();
 }
 
-class _CustomChart2ScreenState extends State<CustomChart2Screen> with TickerProviderStateMixin {
+class _CustomChart4ScreenState extends State<CustomChart4Screen> with TickerProviderStateMixin {
 
   AnimationController? _animationController;
   Animation<Offset>? _slideAnimation;
@@ -50,8 +51,7 @@ class _CustomChart2ScreenState extends State<CustomChart2Screen> with TickerProv
       Data(monthName: 'Sep', revenue: "7", forcast: "10")
     ];
 
-    Color colorBlue = Color(0xff6fc7f7);
-    Color colorRed = Color(0xffed6b3c);
+    Color colorBlue = Color(0xffed6b3c);
 
     return Scaffold(
         backgroundColor: ColorsTheme.backgroundColor,
@@ -107,33 +107,34 @@ class _CustomChart2ScreenState extends State<CustomChart2Screen> with TickerProv
                               ),
                             ),
                             series: <ChartSeries>[
-                              SplineSeries<Data, String>(
+                              SplineAreaSeries<Data, String>(
                                 dataSource: dataSpline,
                                 color: colorBlue,
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter, // Set the start position of the gradient
+                                  end: Alignment.bottomCenter, // Set the end position of the gradient
+                                  colors: [
+                                    Colors.red.shade900,
+                                    Colors.red.shade500,
+                                    Colors.red.shade400,
+                                    Colors.red.shade300,
+                                    Colors.red.shade200,
+                                    Colors.red.shade100,
+                                    Colors.red.shade50,
+                                  ], // Set the gradient colors
+                                ),
+                                splineType: SplineType.monotonic,
+                                enableTooltip: true,
+                                markerSettings: MarkerSettings(isVisible: false),
                                 xValueMapper: (Data sales, _) => sales.monthName,
                                 yValueMapper: (Data sales, _) => int.parse(sales.revenue),
                                 name: 'Revenue',
                                 animationDelay: 800,
                                 animationDuration: 2000,
                               ),
-                              AreaSeries<Data, String>(
-                                dataSource: dataSpline,
-                                color: Colors.blue.withOpacity(0.2),
-                                xValueMapper: (Data sales, _) => sales.monthName,
-                                yValueMapper: (Data sales, _) => int.parse(sales.revenue),
-                              ),
-                              SplineSeries<Data, String>(
-                                dataSource: dataSpline,
-                                color: colorRed,
-                                xValueMapper: (Data sales, _) => sales.monthName,
-                                yValueMapper: (Data sales, _) =>
-                                    int.parse(sales.forcast),
-                                name: 'Expenses',
-                                animationDelay: 800,
-                                animationDuration: 2000,
-                              ),
                             ],
-                            tooltipBehavior: TooltipBehavior(enable: true),
+                              plotAreaBorderColor: Colors.amber,
+                              tooltipBehavior: TooltipBehavior(enable: true),
                           ),
                           SizedBox(height: 20),
                           Row(
@@ -145,13 +146,6 @@ class _CustomChart2ScreenState extends State<CustomChart2Screen> with TickerProv
                               ),
                               SizedBox(width: 5),
                               Text("Revenue"),
-                              SizedBox(width: 20),
-                              CircleAvatar(
-                                radius: 8,
-                                backgroundColor: colorRed,
-                              ),
-                              SizedBox(width: 5),
-                              Text("Expenses"),
                             ],
                           ),
                         ],
@@ -162,7 +156,7 @@ class _CustomChart2ScreenState extends State<CustomChart2Screen> with TickerProv
                     width: 150,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CustomChart3Screen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CustomChart5Screen()));
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black, backgroundColor: Colors.white, // text color

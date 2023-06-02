@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:task_list_app/projects/customChart/customCharts4.dart';
 import 'package:task_list_app/styles/color.dart';
 
 class CustomChart3Screen extends StatefulWidget {
@@ -113,6 +114,19 @@ class _CustomChart3ScreenState extends State<CustomChart3Screen> with TickerProv
                   ],
                   tooltipBehavior: TooltipBehavior(enable: true),
                 ),
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> CustomChart4Screen()));
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.white, // text color
+                  side:   BorderSide(width: 2, color: Colors.black), // outline border
+                ),
+                child: Text('Next'),
               ),
             ),
           ]),
